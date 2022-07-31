@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Wordle-Using-Python-and-React
 The final version of the previously built crude application. Developed using Python's `Flask` as the backend and the power of `React` for the frontend.
 
