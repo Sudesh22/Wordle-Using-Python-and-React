@@ -6,6 +6,13 @@ app = Flask(__name__)
 def home():
     return("<h1>hello<h1/>")
 
+@app.post("/newWord")
+def NewWord():
+    response = newWord()
+    message = {"answer": response}
+    print(message)
+    return jsonify(message)
+
 @app.post("/check")
 def check():
     text = request.get_json().get("text")
@@ -14,13 +21,6 @@ def check():
     output = CheckWord(answer, text)
     print("output is",output)
     message = {"answer": answer, "output" : output}
-    return jsonify(message)
-
-@app.post("/newWord")
-def NewWord():
-    response = newWord()
-    message = {"answer": response}
-    print(message)
     return jsonify(message)
 
 if __name__ == "__main__":

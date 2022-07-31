@@ -6,7 +6,7 @@ export class Wordle_ {
         }
 
         this.state = false;
-        this.count = 0;
+        this.count = 1;
         this.answer = "";
         this.gameOver = false;
         this.guessed = false;
@@ -79,8 +79,18 @@ export class Wordle_ {
     }
 
     update_board(word, correct, wrong){
+        if (word===this.answer){
+            this.guessed=true
+            this.gameOver=true
+        }
+        if (this.guessed === false && this.count === 6){
+            alert("You lost the word was " + this.answer)
+        }
+        if (this.guessed === true && this.gameOver){
+            alert("You guessed it right! The word was " + this.answer)
+        }
         for (var j = 0; j < word.length; j++) {
-            var tile = document.getElementById((this.count).toString() + "-" + j.toString());
+            var tile = document.getElementById((this.count-1).toString() + "-" + j.toString());
             for (var l = 0; l < wrong.length; l++) {
                 if (j===wrong[l]){
                     tile.classList.toggle("present");
@@ -88,24 +98,16 @@ export class Wordle_ {
             }
             for (var k = 0; k < correct.length; k++) {
                 if (j===correct[k]){
+                    tile.classList.remove("present")
                     tile.classList.toggle("correct");
                 }
             }
-            if (word===this.answer){
-                this.guessed=true
-            }
-            if (this.count===6 && j===6){
+            if (this.count===6){
                 this.gameOver=true;
             }
             tile.innerText = word[j].toUpperCase();
         }
         this.count += 1;
-        if (this.guessed === false && this.count === 6){
-            alert("You lost the word was " + this.answer)
-        }
-        if (this.guessed === true && this.gameOver){
-            alert("You guessed it right! The word was " + this.answer)
-        }
     }
 }
 
