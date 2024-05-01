@@ -69,7 +69,7 @@ def CheckWord(target, guess):
             return {"Wrong": list(set(set(x for x in list(o for o,v in enumerate(letters) if v == target_list[o])).symmetric_difference(set([letters.index(x) for x in letters if x in target_list])))),
                     "Correct":  list(x for x in [o for o, v in enumerate(letters) if v == target_list[o]])}
 ```
-## Snaps of the Project
+## Snaps of the Project 📸
 <p align=center>
   <img src="Resources/Eg1.svg">
   <p align=center>Realtime Gameplay</p>

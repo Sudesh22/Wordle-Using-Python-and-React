@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from Wordle import newWord, CheckWord
+import socket
 app = Flask(__name__)
 
 @app.get("/")
@@ -24,4 +25,6 @@ def check():
     return jsonify(message)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.debug=True
+    IPAddr = socket.gethostbyname(socket.gethostname())  
+    app.run(host=IPAddr, port=5000)
